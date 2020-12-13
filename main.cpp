@@ -10,6 +10,7 @@
 #include "project.hpp"
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 /**
@@ -99,17 +100,20 @@ int main()
           cout << "  " << endl;
           cout << "  " << endl;
 
-          if ((res_4clusters[8] < res_3clusters[6]) && (res_4clusters[8] < res_2clusters[4]))
+          vector<double> BICs{res_2clusters[4], res_3clusters[6], res_4clusters[8]};
+
+          // Printing the optimal number of clusters
+          if (*min_element(BICs.begin(), BICs.end()) == res_2clusters[4])
           {
-               cout << "Grouping into 4 clusters gives the best result" << endl;
+               cout << "Grouping into 2 clusters gives the best result" << endl;
           }
-          else if ((res_3clusters[6] < res_4clusters[8]) && (res_3clusters[6] < res_2clusters[4]))
+          else if (*min_element(BICs.begin(), BICs.end()) == res_3clusters[6])
           {
                cout << "Grouping into 3 clusters gives the best result" << endl;
           }
           else
           {
-               cout << "Grouping into 2 clusters gives the best result" << endl;
+               cout << "Grouping into 4 clusters gives the best result" << endl;
           }
      }
      catch (const Max_Expectation::variance_must_be_positive &e)

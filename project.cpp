@@ -14,17 +14,14 @@
 #include <vector>
 #include <random>
 #include <cmath>
-//#include <algorithm>
 
 using namespace std;
 
 /**
  * @brief  template for overloading the exponential function
- * 
  * @param b vector of type T
  * @return template <typename T> 
  */
-
 template <typename T>
 vector<T> exp(const vector<T> &b)
 {
@@ -40,9 +37,8 @@ vector<T> exp(const vector<T> &b)
 
 /**
  * @brief operator overloads for << 
- * 
  * @param out 
- * @param v 
+ * @param v vector of doubles
  * @return ostream& 
  */
 
@@ -56,6 +52,13 @@ ostream &operator<<(ostream &out, const vector<double> &v)
     return out;
 }
 
+/**
+ * @brief Operation overload for vector addition
+ * 
+ * @param v 
+ * @param w 
+ * @return vector<double> 
+ */
 vector<double> operator+(const vector<double> &v, const vector<double> &w)
 {
     size_t s{v.size()};
@@ -67,12 +70,25 @@ vector<double> operator+(const vector<double> &v, const vector<double> &w)
     return u;
 }
 
+/**
+ * @brief Operation overload to iteratively add vector
+ * 
+ * @param v 
+ * @param w 
+ * @return vector<double> 
+ */
 vector<double> operator+=(vector<double> &v, const vector<double> &w)
 {
     v = v + w;
     return v;
 }
 
+/**
+ * @brief Operation overload for negating vectors
+ * 
+ * @param v vector
+ * @return vector<double> 
+ */
 vector<double> operator-(const vector<double> &v)
 {
     size_t s{v.size()};
@@ -82,6 +98,12 @@ vector<double> operator-(const vector<double> &v)
     return u;
 }
 
+/**
+ * @brief Operation overload for vector subtraction
+ * @param v vector of doubles 
+ * @param w vector of doubles 
+ * @return vector<double> 
+ */
 vector<double> operator-(const vector<double> &v, const vector<double> &w)
 {
     size_t s{v.size()};
@@ -93,12 +115,25 @@ vector<double> operator-(const vector<double> &v, const vector<double> &w)
     return u;
 }
 
+/**
+ * @brief Operation overload to iteratively subtracting vector
+ * 
+ * @param v vector
+ * @param w vector
+ * @return vector<double> 
+ */
 vector<double> operator-=(vector<double> &v, const vector<double> &w)
 {
     v = v - w;
     return v;
 }
 
+/**
+ * @brief Operation overload for dot product
+ * @param v vector of doubles 
+ * @param w vector of doubles 
+ * @return double 
+ */
 double operator*(const vector<double> &v, const vector<double> &w)
 {
     size_t s{v.size()};
@@ -110,6 +145,13 @@ double operator*(const vector<double> &v, const vector<double> &w)
     return p;
 }
 
+/**
+ * @brief Operatior overload for multipying a scalar by a vector
+ * 
+ * @param x scalar 
+ * @param v vector
+ * @return vector<double> 
+ */
 vector<double> operator*(const double &x, const vector<double> &v)
 {
     size_t s{v.size()};
@@ -119,6 +161,13 @@ vector<double> operator*(const double &x, const vector<double> &v)
     return u;
 }
 
+/**
+ * @brief Operation overload for multipying a vector by a scalar  
+ * @param v vector
+ * @param x scalar
+ * @return vector<double> 
+ */
+
 vector<double> operator*(const vector<double> &v, const double &x)
 {
     return x * v;
@@ -126,7 +175,6 @@ vector<double> operator*(const vector<double> &v, const double &x)
 
 /**
  * @brief Function to write data
- * 
  * @param dataSize_perGaussian 
  */
 
@@ -156,9 +204,9 @@ void WriteData_File::WriteData(const int &dataSize_perGaussian)
         }
     }
 }
+
 /**
  * @brief Function to read data
- * 
  * @return vector<double> 
  */
 vector<double> Max_Expectation::data()
@@ -186,7 +234,6 @@ vector<double> Max_Expectation::data()
 
 /**
  * @brief Function to compute unmormalised posteriors
- * 
  * @param mu  means of individual classes
  * @param var variances of individual classes
  * @return vector<double> 

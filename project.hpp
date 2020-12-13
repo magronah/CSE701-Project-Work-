@@ -24,7 +24,6 @@ class could_not_open_Datafile
 
 /**
  * @brief Class with function and parameters for writing the data 
- * 
  */
 
 class WriteData_File
@@ -48,13 +47,13 @@ private:
 class Max_Expectation
 {
 public:
-    //Fucntion to store data into a vector
+    //Function to store data into a vector
     vector<double> data();
 
-    //Fucntion to store data into a vector
+    //Function to store data into a vector
     vector<double> Unnormalised_posteriors(const vector<double> &mu, const vector<double> &var);
 
-    //Fucntion overloads for estimating the variances and means
+    //Function overloads for estimating the variances and means
     //2 clusters, 3 clusters and 4 clusters
 
     vector<double> em(const double (&m)[2], const double (&v)[2]);
@@ -82,30 +81,52 @@ private:
 
 /**
  * @brief Class to throw exception f vector sizes differ
- * 
  */
 class size_must_match
 {
 };
 
 /**
- * @brief Operetaor overloads for vectors
- * 
+ * @brief Operator overload to print out vectors
  */
 ostream &operator<<(ostream &, const vector<double> &);
 
+/**
+ * @brief Operator overload for vector addition
+ */
 vector<double> operator+(const vector<double> &, const vector<double> &);
 
+/**
+ * @brief Operator overload to iteratively add vectors
+ */
 vector<double> operator+=(vector<double> &, const vector<double> &);
 
+/**
+ * @brief Operator overload for negating vectors
+ */
 vector<double> operator-(const vector<double> &);
 
+/**
+ * @brief Operator overload for subtracting vectors
+ */
 vector<double> operator-(const vector<double> &, const vector<double> &);
 
+/**
+ * @brief Operator overload to iteratively subtract vectors
+ */
 vector<double> operator-=(vector<double> &, const vector<double> &);
 
+/**
+ * @brief Operator overload for vector dot product
+*/
 double operator*(const vector<double> &, const vector<double> &);
 
+/**
+ * @brief Operator overload to multiply a scalar by a vector 
+ */
 vector<double> operator*(const double &, const vector<double> &);
 
+/**
+ * @brief Operator overload to multiply a vector by a scalar
+ */
 vector<double> operator*(const vector<double> &, const double &);
