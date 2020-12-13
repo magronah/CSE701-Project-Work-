@@ -4,9 +4,7 @@
  * @brief A program to cluster data into classes
  * @version 0.1
  * @date 2020-12-12
- * 
  * @copyright Copyright (c) 2020
- * 
  */
 
 #include "project.hpp"
@@ -15,7 +13,9 @@
 
 using namespace std;
 /**
- * @mainpage This is a program demonstrating how to implement the EM algorithm for clustering  problem. The program was writen as a project for the course (CSE 701) Foundations of Modern Scientific Programming, taken at McMaster Univertsity <span style="color: green;">HTML tags.</span>. 
+ * @mainpage This is a program demonstrating how to implement the EM algorithm for clustering  problem. 
+ * The program was writen as a project for the course (CSE 701) Foundations of Modern Scientific Programming, 
+ * taken at McMaster University. 
  */
 int main()
 {
