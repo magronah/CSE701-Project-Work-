@@ -25,7 +25,7 @@ The implementation is summarised as follows: Given intial values for parameters,
 
 #### 5.compute total likelihood and compare with a threshold condition
 
-## Demonstration for 1d dataset and 2 clusters 
+### Demonstration for 1d dataset and 2 clusters 
 For a univariant gaussian, the parameters to estimate are the means and the variances. 
 
 Given vectors of intial mean = [x_1 , x_2]  and intial variance = [v_1 , v-2],
