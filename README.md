@@ -15,49 +15,48 @@ The E-step finds the posterior probability of each sample x_i, belonging to each
 
 The implementation is summarised as follows: Given intial values for parameters, for each x_i,
 
-1.compute the likelihood of x_i belonging to each cluster
+#### 1.compute the likelihood of x_i belonging to each cluster
 
-2.estimate posterior probability of each cluster given x_i 
+#### 2.estimate posterior probability of each cluster given x_i 
 
-3.update paramters of the gaussian distribution
+#### 3.update paramters of the gaussian distribution
 
-4.estimate weights of each cluster 
+#### 4.estimate weights of each cluster 
 
-5.Compute total likelihood and compare with a threshold condition
+#### 5.compute total likelihood and compare with a threshold condition
 
 ## Demonstration for 1d dataset and 2 clusters 
 For a univariant gaussian, the parameters to estimate are the means and the variances. 
 
 Given vectors of intial mean = [x_1 , x_2]  and intial variance = [v_1 , v-2],
 
-1.compute likelihoods of cluster A (P(x_i|a)) and  likelihoods of cluster B ( P(x_i|b)) from a Gaussian distributions with parameters (x_1,v_1) and (x_2, v_2) respectively.
+##### 1.compute likelihoods of cluster A (P(x_i|a)) and  likelihoods of cluster B ( P(x_i|b)) from a Gaussian distributions with parameters (x_1,v_1) and (x_2, v_2) respectively.
 
-2.compute posterior probabilities of clusters A and B
+##### 2.compute posterior probabilities of clusters A and B
 
 cluster A: a_i= P(a|x_i) = P(x_i|a)*prior /normaliser
 
 cluster B: b_i= P(b|x_i) = P(x_i|b)*prior /normaliser
 
-3.Update mean 
+##### 3.Update mean 
 
 mean_a = sum (a_i*x_i)/(sum(P(a|x_i))), i= 1,...,n
 
 mean_b = sum (b_i*x_i)/(sum(P(b|x_i))), i= 1,...,n
 
-Update variance
+##### 4. Update variance
 
 variance_a = sum(a_i(x_i - mean_a)^2)/ sum(a_i)
 
 variance_b = sum(b_i(x_i - mean_b)^2)/ sum(b_i)
 
-4.Compute weights 
+##### 5.Compute weights 
 
 Cluster A: sum a_i, i= 1,...,n
 
 Cluster B: sum b_i,  i= 1,...,n
 
-
-5.Compute total likelihoods = sum (weight_A*P(x_i|a) + weight_B*P(x_i|b)),  i= 1,...,n
+#### 6.Compute total likelihoods = sum (weight_A*P(x_i|a) + weight_B*P(x_i|b)),  i= 1,...,n
 
 ## Usage
 The header file (project.hpp) contains classes for writing the data used for the implementation, classes to throw execptions and a class for the EM algorithm. 
@@ -108,7 +107,7 @@ Minimum Likelihood  =-0.22545
 
 BIC selection criteria =58.5793
 
-
+#### Optimal number of cluster
 Grouping into 2 clusters gives the best result
 
 ## References
