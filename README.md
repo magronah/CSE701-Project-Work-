@@ -20,24 +20,24 @@ The implementation is summarised as follows: Given intial values for parameters,
 5. estimate weights of each cluster 
 6. Compute total likelihood and compare with a threshold condition
 
-# Demonstration for 1d dataset and 2 clusters 
+## Demonstration for 1d dataset and 2 clusters 
 For a univariant gaussian, the parameters to estimate are the means and the variances. 
 
 Given vectors of intial mean = [x_1 , x_2]  and intial variance = [v_1 , v-2],
 
-1. compute likelihoods of cluster A from a Gaussian distributions P(x_i|a)= and P(x_i|b)
+1. compute likelihoods of cluster A (P(x_i|a)) and  likelihoods of cluster B ( P(x_i|b)) from a Gaussian distributions with parameters (x_1,v_1) and (x_2, v_2) respectively.
 
 2. compute posterior probabilities of clusters A and B
 
-cluster A: P(a|x_i) = P(x_i|a)*prior /normaliser
+cluster A: a_i= P(a|x_i) = P(x_i|a)*prior /normaliser
 
-cluster B = P(b|x_i) = P(x_i|b)*prior /normaliser
+cluster B: b_i= P(b|x_i) = P(x_i|b)*prior /normaliser
 
 3. Update mean 
 
-mean_a = \sigma sum (a_ix_i)/(sum(a_i))
+mean_a = sum (a_i*x_i)/(sum(P(a|x_i))), i= 1,...,n
 
-mean_b = sum (b_ix_i)/(sum(b_i))
+mean_b = sum (b_i*x_i)/(sum(P(b|x_i))), i= 1,...,n
 
 Update variance
 
@@ -45,7 +45,14 @@ variance_a = sum(a_i(x_i - mean_a)^2)/ sum(a_i)
 
 variance_b = sum(b_i(x_i - mean_b)^2)/ sum(b_i)
 
-4. Sum of likelihood = sum (weight_A*likelihoods_A + weight_B*likelihoods_B) 
+4. Compute weights 
+
+Cluster A: sum a_i, i= 1,...,n
+
+Cluster B: sum b_i,  i= 1,...,n
+
+
+5. Compute total likelihoods = sum (weight_A*P(x_i|a) + weight_B*P(x_i|b)),  i= 1,...,n
 
 ## Usage
 The header file (project.hpp) contains classes for writing the data used for the implementation, classes to throw execptions and a class for the EM algorithm. 
@@ -53,11 +60,11 @@ The project.cpp file contains defined functions and vector operator overloads.
 The main.cpp file test the code and returns the outputs 
 
 ## Example
-#Input
+### Inputs
 Initial means  = {2000.0, 5000.0, 7000.0, 4000.0};
 Initial variances  = {130.0, 700.0, 100.0, 600.0};
 
-#Output
+### Output
 Results from 2 clusters
 First_Cluster: Mean =8767.28 Variance = 2.47081e+06
 Second_Cluster:Mean = 8153.19 Variance = 2.3604e+06
@@ -81,7 +88,7 @@ BIC selection criteria =58.5793
 
 Grouping into 2 clusters gives the best result
 
-##References
+## References
 1. Fessler, J. A., & Hero, A. O. (1994). Space-alternating generalized expectation-maximization algorithm. IEEE Transactions on signal processing, 42(10), 2664-2677.
 
-2.Dellaert, F. (2002). The expectation maximization algorithm. Georgia Institute of Technology.
+2. Dellaert, F. (2002). The expectation maximization algorithm. Georgia Institute of Technology.
