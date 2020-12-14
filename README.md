@@ -14,11 +14,16 @@ Given observations X= {x_i, x_2, ..., x_n} and k_1,k_2,...,k_m  number of cluste
 The E-step finds the posterior probability of each sample x_i, belonging to each class k_i. The M-step updates the model parameters and estimates the weights for the individual clusters [2]. 
 
 The implementation is summarised as follows: Given intial values for parameters, for each x_i,
+
 1.compute the likelihood of x_i belonging to each cluster
+
 2.estimate posterior probability of each cluster given x_i 
+
 3.update paramters of the gaussian distribution
-5.estimate weights of each cluster 
-6.Compute total likelihood and compare with a threshold condition
+
+4.estimate weights of each cluster 
+
+5.Compute total likelihood and compare with a threshold condition
 
 ## Demonstration for 1d dataset and 2 clusters 
 For a univariant gaussian, the parameters to estimate are the means and the variances. 
@@ -65,7 +70,7 @@ Initial means  = {2000.0, 5000.0, 7000.0, 4000.0};
 Initial variances  = {130.0, 700.0, 100.0, 600.0};
 
 ### Output
-Results from 2 clusters
+#### Results from 2 clusters
 
 First_Cluster: Mean =8767.28 Variance = 2.47081e+06
 
@@ -76,7 +81,7 @@ Minimised Likelihood  =-0.670399
 BIC selection criteria =36.8337
 
 
-Results from 3 clusters
+#### Results from 3 clusters
 
 First_Cluster:  Mean =8581.72 Variance = 4.58361e+07
 
@@ -89,7 +94,7 @@ Minimum Likelihood  =-0.290342
 BIC selection criteria =48.612
 
 
-Results from 4 clusters
+#### Results from 4 clusters
 
 First_Cluster:  Mean =8649.71 Variance = 4.67268e+07
 
