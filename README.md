@@ -7,45 +7,45 @@ This programme implements the EM algorithm and demonstrates how to use the algor
 This code was written by Michael Agronah(agronahm@mcmaster.ca) for a course project in Foundations of Modern Scientific Programming (CSE 701) taken at McMaster University.
 
 ## The Expectation Maximization Algorithm
-The Expectation Maximization Algorithm is an iterative method for estimating parameters of a Gaussian distribution that maximises likelihoods [1]. Each iteration involves two steps: an expectation process (the E- step) and a maximisation step(M-step)
+The Expectation Maximization Algorithm is an iterative method for estimating parameters of a Gaussian distribution that maximises likelihoods [1]. Each iteration involves two steps: the Expectation (or the E-) step and the Maximisation(M-) step. 
 
-Given data X, and the 
+Given observations X= {x_i, x_2, ..., x_n} and k_1,k_2,...,k_m  number of cluster. 
 
+The E-step finds the posterior probability of each sample x_i, belonging to each class k_i. The M-step updates the model parameters and estimates the weights for the individual clusters [2]. 
 
-The implementation follows the process: 
-1. Estimate likelihoods of each data point belonging to each cluster 
-2. Estimate posteriors of each cluster for each data point 
-3. Update the mean and variances
-5. Compute the weights of each cluster 
-6. Compute the sum of likelihood and compare with a threshold value
+The implementation is summarised as follows: Given intial values for parameters, for each x_i,
+1. compute the likelihood of x_i belonging to each cluster
+2. estimate posterior probability of each cluster given x_i 
+3. update paramters of the gaussian distribution
+5. estimate weights of each cluster 
+6. Compute total likelihood and compare with a threshold condition
 
-The process in repeated iteratedly untill the sum of likelihood is threshood contidion is satified. 
+# Demonstration for 1d dataset and 2 clusters 
+For a univariant gaussian, the parameters to estimate are the means and the variances. 
 
-Often a minisiting the sum of likelihood instead of the maximisation is better so we can minimise the negative likelihood. 
+Given vectors of intial mean = [x_1 , x_2]  and intial variance = [v_1 , v-2],
 
-#Example for 2 Cluster analysis 
-Intial mean x1  x2  
-Intial variance v1  v2
+1. compute likelihoods of cluster A from a Gaussian distributions P(x_i|a)= and P(x_i|b)
 
-Compute likelihoods
-Class A: P(x_i|a)=Gausian(x1, v2) 
-Class B: P(x_i|b) = Gausian(x2, v2) 
+2. compute posterior probabilities of clusters A and B
 
-Compute posterior
-a_i = P(a|x_i) = P(x_i|a)*prior /normaliser
-b_i = P(b|x_i) = P(x_i|b)*prior /normaliser
+cluster A: P(a|x_i) = P(x_i|a)*prior /normaliser
 
-Update mean 
-mean_a = sum (a_ix_i)/(sum(a_i))
+cluster B = P(b|x_i) = P(x_i|b)*prior /normaliser
+
+3. Update mean 
+
+mean_a = \sigma sum (a_ix_i)/(sum(a_i))
+
 mean_b = sum (b_ix_i)/(sum(b_i))
 
 Update variance
+
 variance_a = sum(a_i(x_i - mean_a)^2)/ sum(a_i)
+
 variance_b = sum(b_i(x_i - mean_b)^2)/ sum(b_i)
 
-LIKE = sum (weight_A*likelihoods_A + weight_B*likelihoods_B) 
-
- 
+4. Sum of likelihood = sum (weight_A*likelihoods_A + weight_B*likelihoods_B) 
 
 ## Usage
 The header file (project.hpp) contains classes for writing the data used for the implementation, classes to throw execptions and a class for the EM algorithm. 
